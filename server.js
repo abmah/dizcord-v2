@@ -1,5 +1,6 @@
 require("dotenv").config();
-
+const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
@@ -69,7 +70,9 @@ io.on("connection", (socket) => {
   socket.on("chatroomMessage", async ({ chatroomId, message }) => {
     if (message.trim().length > 0) {
       const user = await User.findOne({ _id: socket.userId });
-      console.log(`user data is :  ${user}`);
+      console.log(
+        `user data is :  ${message} written by ${user.name} and the chatroom is ${chatroomId}`
+      );
       const newMessage = new Message({
         chatroom: chatroomId,
         user: socket.userId,

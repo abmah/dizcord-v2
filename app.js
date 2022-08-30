@@ -1,13 +1,11 @@
 const express = require("express");
+const path = require("path");
 const app = express();
+app.use("/", express.static(path.join(__dirname + "/public")));
 const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
-app.get("/", (req, res) => {
-  res.send("app is running...");
-});
 
 // handling the routes
 app.use("/user", require("./routes/user"));
