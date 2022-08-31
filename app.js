@@ -2,10 +2,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 app.use("/", express.static(path.join(__dirname + "/public")));
-const cors = require("cors");
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
+const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -27,3 +27,11 @@ if (process.env.ENV === "DEVELOPMENT") {
 //***********************//
 
 module.exports = app;
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build/index.html'));
+// });
+
+// app.use("/", express.static(path.join(__dirname + "/public"))
+
+// app.use("/", express.static(path.join(__dirname + "/public")));
