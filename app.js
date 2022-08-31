@@ -2,9 +2,6 @@ const express = require("express");
 const path = require("path");
 const app = express();
 app.use("/", express.static(path.join(__dirname + "/public")));
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
-});
 const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,3 +32,6 @@ module.exports = app;
 // app.use("/", express.static(path.join(__dirname + "/public"))
 
 // app.use("/", express.static(path.join(__dirname + "/public")));
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "/public/index.html"));
+// });
