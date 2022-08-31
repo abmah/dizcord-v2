@@ -6,7 +6,7 @@ app.use(express.static(path.join(__dirname + "/public")));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("/public"));
   app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
   });
 }
 const cors = require("cors");
