@@ -11,6 +11,9 @@ app.use(cors());
 app.use("/user", require("./routes/user"));
 app.use("/chatroom", require("./routes/chatroom"));
 
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 // error handlers //
 const errorHandlers = require("./handlers/errorHandlers");
 app.use(errorHandlers.notFound);
