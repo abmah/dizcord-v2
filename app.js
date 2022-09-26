@@ -8,8 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // handling the routes
-app.use("/user", require("./routes/user"));
-app.use("/chatroom", require("./routes/chatroom"));
+app.use("/api/user", require("./routes/user"));
+app.use("/api/chatroom", require("./routes/chatroom"));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
